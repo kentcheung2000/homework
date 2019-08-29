@@ -43,7 +43,7 @@ app.use(logger('dev'));
 
 app.set('view engine', 'ejs'); // here we are telling express to render tempaltes using ejs
 
-app.use("/cohorts", cohortsRouter);
+app.use("/", cohortsRouter);
 
 const PORT = 4590;
 const ADDRESS = 'localhost';

@@ -1,0 +1,32 @@
+<%- include("partials/header")%>
+<section>
+
+    <form action="/new" method="POST">
+
+
+        <div class="form-group mb-3">
+            <label for="logo_url">Logo Url</label>
+            <input class="form-control" type="text" name="logoUrl">
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="name">Name</label>
+            <input class="form-control" type="text" name="name">
+        </div>
+
+        <label for="members">Members</label>
+        <textarea class="form-control" type="text" name="members">
+                </textarea>
+        </div>
+        <br>
+
+        <input type="submit" value="submit" class="btn btn-primary">
+
+    </form>
+
+
+
+
+</section>
+
+<%- include("partials/footer")%>
