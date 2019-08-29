@@ -45,7 +45,7 @@ app.set('view engine', 'ejs'); // here we are telling express to render tempalte
 
 app.use("/cohorts", cohortsRouter);
 
-const PORT = 4545;
+const PORT = 4590;
 const ADDRESS = 'localhost';
 
 app.listen(PORT, ADDRESS, () => {
