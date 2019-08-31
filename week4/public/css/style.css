@@ -1,14 +1,7 @@
-#navbar ul {
+/* .nav-links {
     display: flex;
-    justify-content: flex-end;
-    flex-direction: row;
-    justify-content: space-around;
-    list-style: none;
 }
 
-
-
-.container {
-    color: grey;
-
-}
+.nav-links li:first-child {
+    margin-right: auto;
+} */
