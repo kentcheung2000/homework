@@ -35,6 +35,19 @@ router.post("/new", (req, res) => {
 });
 
 
+router.get("/cohorts", (req, res) => {
+
+    knex.select('*').from('cohorts')
+        .then(data => {
+            res.render("cohorts", {
+                cohort: data
+            });
+        })
+
+})
+
+
+
 
 
 

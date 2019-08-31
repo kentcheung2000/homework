@@ -1,0 +1,26 @@
+<%- include("partials/header")%>
+
+<% cohort.forEach(function(group) { %>
+
+<img src=" <%= group.logoUrl %>" width="300" height="auto">
+<%= group.name%>
+<%= group.members%>
+
+
+
+
+
+
+
+<% })%>
+
+
+
+
+
+
+
+
+
+
+<%- include("partials/footer")%>
