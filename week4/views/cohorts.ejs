@@ -1,25 +1,29 @@
 <%- include("partials/header")%>
 
-<% cohort.forEach(function(group) { %>
-
-<img src=" <%= group.logoUrl %>" width="300" height="auto">
-<%= group.name%>
-<%= group.members%>
 
 
+<div class="container">
+
+    <% cohort.forEach(function(group) { %>
+
+    <div class="panel panel-default pb-4 border rounded my-3 pl-3 pt-3">
+
+        <div class="panel-body pb-2"><img src=" <%= group.logoUrl %>" class="pull-left mr-2 rounded-circle" width="40"
+                height="40">
+            <span class="font-weight-bold text-capitalize text-large"><%= group.name%></span>
+        </div>
+
+        <div class="panel-body pb-2"><%= group.members%></div>
+
+        <a href="<%= group.id %>" class="btn btn-primary btn-sm ">Show cohort</a>
 
 
 
+    </div>
+    <% })%>
 
 
-<% })%>
-
-
-
-
-
-
-
+</div>
 
 
 
