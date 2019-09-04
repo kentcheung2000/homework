@@ -1,8 +1,9 @@
 const express = require("express");
-
 const knex = require("../db/client");
-
 const router = express.Router();
+
+const helpers = require('../helpers');
+
 
 router.get("/", (req, res) => {
     // res.render('index');
@@ -61,52 +62,71 @@ router.get("/cohorts", (req, res) => {
 
 })
 
+// router.get("/:id", (req, res) => {
+
+//     res.cookie('currentId', req.params.id)
+
+//     knex("cohorts")
+//         .select("*")
+//         .where({
+//             id: req.params.id
+//         })
+//         .then((data) => {
+
+//             res.render("show", {
+
+//                 cohort: data[0]
+//             })
+//         })
+// })
+
 router.get("/:id", (req, res) => {
 
-    res.cookie('currentId', req.params.id)
+    // let cohortId = req.cookies['currentId'];
+    // let quantity = req.body.quantity;
+    // // let assignmethod = req.body.assignmethod;
+    // const assignmethod = req.query.assignmethod;
 
+    let cohortId = req.params.id
 
+    // res.render("result")
 
+    console.log(cohortId)
 
 
     knex("cohorts")
         .select("*")
         .where({
-            id: req.params.id
+            id: cohortId
         })
         .then((data) => {
-            // res.cookie('currentMembers', req.query.members)
-            // res.cookie('currentName', req.query.name)
-            // res.cookie('currentMembers', data),
-            // res.cookie('currentName', req.body.name),
+
+            // const members = data[0]['members'].trim().split(',');
+
+            // const assignmethod = req.query.assignmethod;
 
 
-            res.render("show", {
+            // console.log("assign method: " + assignmethod);
 
+            // console.log('members: ', members);
+            // let mixedMembers = helpers.teamCount(members);
+
+            // console.log(mixedMembers);
+
+
+
+            // helpers.firstFunc(members);
+
+
+            res.render("result", {
                 cohort: data[0],
-                // cohortname: currentName
-
-
+                id: cohortId
+                // members
             })
+            // console.dir("test members: " + members)
         })
 })
 
-
-router.post("/show", (req, res) => {
-
-    // const cohortId = req.cookies.currentId;
-    // const cohortName = req.cookies.name;
-    // const cohortMembers = req.cookies.members;
-    // res.cookie('test', req.cookies.name)
-
-
-    req.cookies
-
-    res.render("result", {
-        // cohortname: cohortName,
-        // cohortMembers: cohortMembers
-    })
-})
 
 
 module.exports = router;

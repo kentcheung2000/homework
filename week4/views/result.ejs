@@ -4,15 +4,15 @@
 <div class="container">
     <div class="panel panel-default pb-4 border rounded my-3 pl-3 pr-3 pt-3">
         <div class="panel-body pb-2">
-            <span class="font-weight-bold text-capitalize text-large"><%=  cohortname%></span>
+            <span class="font-weight-bold text-capitalize text-large"><%= cohort.name %></span>
         </div>
-        <div class="panel-body pb-2"><%= cohortMembers%></div>
+        <div class="panel-body pb-2"><%=cohort.members %></div>
 
         <div class="panel-body border"></div>
 
         <div class="panel-body">
 
-            <form action="/show" method="POST">
+            <form>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="assignmethod" value="teamcount">
                     <label class="form-check-label" for="assignmethod">
