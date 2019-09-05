@@ -8,14 +8,26 @@ module.exports = {
     },
 
     teamCount: (members, quantity) => {
-        // const mixedMembers = module.exports.shuffleMembers(members);
+        let teamCountArray = [];
+
+        const teamCountNum = (Math.round((members.length) / quantity));
         const mixedMembers = module.exports.shuffleMembers(members);
 
+        // console.log("member length" + members.length)
+        // console.log("Quantity: " + quantity)
+
+        // console.log("teamcount" + teamCountNum);
 
 
-        // console.log(mixedMembers);
+        // while (mixedMembers.length) teamCountArray.push(mixedMembers.splice(0, teamCountNum));
 
-        return mixedMembers;
+        while (mixedMembers.length > 0) {
+            // teamCountArray = [];
+            teamCountArray.push(mixedMembers.splice(0, teamCountNum));
+            // console.log(teamCountArray)
+        }
+        // console.log(`Testing: ${teamCountArray}`)
+        return teamCountArray;
 
 
     },

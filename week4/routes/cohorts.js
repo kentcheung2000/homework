@@ -76,10 +76,22 @@ router.get("/:id", (req, res) => {
         })
         .then((data) => {
 
-            const members = data[0]['members'].trim().split(',');
-            const newMembers = helpers.teamCount(members);
+            if (assignmethod == 'teamcount') {
 
-            console.log('new Members: ' + newMembers);
+                const members = data[0]['members'].trim().split(',');
+                const newMembers = helpers.teamCount(members, quantity);
+                console.log('*****************');
+
+                console.log(newMembers);
+                console.log('*****************');
+
+            }
+
+
+
+
+
+
 
 
 
