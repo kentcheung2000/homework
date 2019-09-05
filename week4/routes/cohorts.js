@@ -62,37 +62,12 @@ router.get("/cohorts", (req, res) => {
 
 })
 
-// router.get("/:id", (req, res) => {
-
-//     res.cookie('currentId', req.params.id)
-
-//     knex("cohorts")
-//         .select("*")
-//         .where({
-//             id: req.params.id
-//         })
-//         .then((data) => {
-
-//             res.render("show", {
-
-//                 cohort: data[0]
-//             })
-//         })
-// })
 
 router.get("/:id", (req, res) => {
 
-    // let cohortId = req.cookies['currentId'];
-    // let quantity = req.body.quantity;
-    // // let assignmethod = req.body.assignmethod;
-    // const assignmethod = req.query.assignmethod;
-
-    let cohortId = req.params.id
-
-    // res.render("result")
-
-    console.log(cohortId)
-
+    const cohortId = req.params.id;
+    const assignmethod = req.query.assignmethod;
+    const quantity = req.query.quantity;
 
     knex("cohorts")
         .select("*")
@@ -101,17 +76,12 @@ router.get("/:id", (req, res) => {
         })
         .then((data) => {
 
-            // const members = data[0]['members'].trim().split(',');
+            const members = data[0]['members'].trim().split(',');
+            const newMembers = helpers.teamCount(members);
 
-            // const assignmethod = req.query.assignmethod;
+            console.log('new Members: ' + newMembers);
 
 
-            // console.log("assign method: " + assignmethod);
-
-            // console.log('members: ', members);
-            // let mixedMembers = helpers.teamCount(members);
-
-            // console.log(mixedMembers);
 
 
 

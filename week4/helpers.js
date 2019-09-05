@@ -8,12 +8,14 @@ module.exports = {
     },
 
     teamCount: (members, quantity) => {
+        // const mixedMembers = module.exports.shuffleMembers(members);
         const mixedMembers = module.exports.shuffleMembers(members);
 
-        
 
-        console.log(mixedMembers);
 
+        // console.log(mixedMembers);
+
+        return mixedMembers;
 
 
     },
