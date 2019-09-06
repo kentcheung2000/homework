@@ -1,22 +1,21 @@
-<%- include("partials/header")%>
-
-
+<%- include("./partials/header") %>
 <div class="container">
 
-    <%- console.dir(newMembers) %>
-    <%- JSON.stringify(newMembers) %>
+
 
     <div class="panel panel-default pb-4 border rounded my-3 pl-3 pr-3 pt-3">
         <div class="panel-body pb-2">
-            <span class="font-weight-bold text-capitalize text-large"><%= cohort.name %></span>
+            <span class="font-weight-bold text-capitalize text-large"><%= cohort.name%></span>
         </div>
-        <div class="panel-body pb-2"><%=cohort.members %></div>
+        <div class="panel-body pb-2"><%= cohort.members%></div>
 
         <div class="panel-body border"></div>
 
         <div class="panel-body">
 
-            <form>
+            <form action="<%=cohort.id %>" method="post">
+                <input type="hidden" value="PATCH" name="_method">
+                <!-- <form action=`cohorts\:${id}` method="get"> -->
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="assignmethod" value="teamcount">
                     <label class="form-check-label" for="assignmethod">
@@ -34,46 +33,18 @@
                     <input type="text" class="form-control" name="quantity" required>
                 </div>
 
-                <button type="submit" class="btn btn-primary my-1">Assign Teams</button>
+
+                <button type="hidden" value="Update" class="btn btn-primary my-1">Update Team</button>
+                <button type="hidden" value="Delete" class="btn btn-primary my-1">Delete Team</button>
+
 
             </form>
-            <a href=<%=cohort.id %>\edit><button type="hidden" class="btn btn-primary my-1">Update
-                    Team</button></a>
-            <button type="hidden" class="btn btn-primary my-1">Delete Team</button>
-
-        </div>
-
-        <div class="panel-body">
-            <span class="font-weight-bold text-capitalize"># Members</span>
-
 
         </div>
 
 
-
-
-        <div class="panel-body">
-
-            <div class="panel-body border"></div>
-            <ol>
-                <%  newMembers.forEach(team => { %>
-                <li><%= team.join(', ') %></li>
-                <div class="panel-body border"></div>
-
-                <%  });%>
-
-            </ol>
-
-
-        </div>
 
 
     </div>
 </div>
-
-
-
-
-
-
-<%- include("partials/footer")%>
+<%- include("./partials/footer") %>

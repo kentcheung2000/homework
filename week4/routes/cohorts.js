@@ -102,7 +102,50 @@ router.get("/:id", (req, res) => {
             //   <%- JSON.stringify(newMembers) %> 
             // console.dir("test members: " + members)
         })
+
+
 })
+
+router.delete("/:id", (req, res) => {
+    knex("cohorts")
+        .where({
+            id: req.params.id
+        })
+        .delete()
+        .then((data) => {
+            res.redirect("")
+        })
+})
+
+router.get("/:id/edit", (req, res) => {
+    knex("cohorts")
+        .select("*")
+        .where({
+            id: req.params.id
+        })
+        .then((data) => {
+            res.render("edit", {
+                cohort: data[0]
+            })
+        })
+})
+
+router.patch("/:id", (req, res) => {
+    const cohortParams = {
+        logoUrl: req.body.logoUrl,
+        name: req.body.name,
+        members: req.body.members
+    };
+    knex("cohorts")
+        .where({
+            id: req.params.id
+        })
+        .update(cohortParams)
+        .returning('id')
+        .then((data) => {
+            res.redirect(`${data[0]}`);
+        });
+});
 
 
 
