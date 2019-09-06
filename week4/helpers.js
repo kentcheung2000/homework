@@ -11,6 +11,9 @@ module.exports = {
         let teamCountArray = [];
 
         const teamCountNum = (Math.round((members.length) / quantity));
+
+
+
         const mixedMembers = module.exports.shuffleMembers(members);
 
         // console.log("member length" + members.length)

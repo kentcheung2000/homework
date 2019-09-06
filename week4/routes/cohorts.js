@@ -68,6 +68,7 @@ router.get("/:id", (req, res) => {
     const cohortId = req.params.id;
     const assignmethod = req.query.assignmethod;
     const quantity = req.query.quantity;
+    let newMembers = [];
 
     knex("cohorts")
         .select("*")
@@ -79,32 +80,26 @@ router.get("/:id", (req, res) => {
             if (assignmethod == 'teamcount') {
 
                 const members = data[0]['members'].trim().split(',');
-                const newMembers = helpers.teamCount(members, quantity);
-                console.log('*****************');
+                newMembers = helpers.teamCount(members, quantity);
 
-                console.log(newMembers);
-                console.log('*****************');
+
+                //console.log(newMembers);
+
 
             }
-
-
-
-
-
-
-
-
-
-
 
             // helpers.firstFunc(members);
 
 
             res.render("result", {
                 cohort: data[0],
-                id: cohortId
-                // members
+                id: cohortId,
+                newMembers
+
+
             })
+
+            //   <%- JSON.stringify(newMembers) %> 
             // console.dir("test members: " + members)
         })
 })
