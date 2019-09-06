@@ -36,8 +36,18 @@ module.exports = {
     },
 
     numberPerTeam: (members, quantity) => {
+
+        let numberPerTeamArray = [];
         const mixedMembers = module.exports.shuffleMembers(members);
 
+
+        while (mixedMembers.length > 0) {
+            // teamCountArray = [];
+            numberPerTeamArray.push(mixedMembers.splice(0, quantity));
+            // console.log(teamCountArray)
+        }
+
+        return numberPerTeamArray;
     },
 
     shuffleMembers: (members) => {

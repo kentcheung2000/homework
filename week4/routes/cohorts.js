@@ -82,10 +82,10 @@ router.get("/:id", (req, res) => {
                 const members = data[0]['members'].trim().split(',');
                 newMembers = helpers.teamCount(members, quantity);
 
+            } else if (assignmethod == 'numberperteam') {
 
-                //console.log(newMembers);
-
-
+                const members = data[0]['members'].trim().split(',');
+                newMembers = helpers.numberPerTeam(members, quantity);
             }
 
             // helpers.firstFunc(members);
