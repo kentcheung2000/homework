@@ -1,0 +1,42 @@
+<%- include("./partials/header") %>
+<div class="container">
+    <form action="/<%=cohort.id %>" method="post">
+        <input type="hidden" value="PATCH" name="_method">
+
+
+
+
+        <input class="form-control" type="text" name="logoUrl" value="<%= cohort ? cohort.logoUrl : '' %>">
+
+
+        <span class="font-weight-bold text-capitalize text-large"><input class="form-control" type="text" name="name"
+                value="<%= cohort ? cohort.name : '' %>"></span>
+
+        <input class="form-control" type="text" name="members" value="<%= cohort ? cohort.members : '' %>">
+
+
+
+
+        <div class="panel-body border"></div>
+
+        <div class="panel-body">
+
+
+            <!-- <form action=`cohorts\:${id}` method="get"> -->
+
+
+
+            <button type="hidden" value="update" class="btn btn-primary my-1">Update Team</button>
+            <button type="hidden" class="btn btn-primary my-1" value="delete">Delete Team</button>
+
+
+    </form>
+
+</div>
+
+
+
+
+</div>
+</div>
+<%- include("./partials/footer") %>
