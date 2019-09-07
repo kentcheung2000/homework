@@ -1,10 +1,7 @@
 <%- include("partials/header")%>
 
-
 <div class="container">
 
-    <%- console.dir(newMembers) %>
-    <%- JSON.stringify(newMembers) %>
 
     <div class="panel panel-default pb-4 border rounded my-3 pl-3 pr-3 pt-3">
         <div class="panel-body pb-2">
@@ -18,7 +15,7 @@
 
             <form>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="assignmethod" value="teamcount">
+                    <input class="form-check-input" type="radio" name="assignmethod" value="teamcount" id="team">
                     <label class="form-check-label" for="assignmethod">
                         Team Count
                     </label>
@@ -36,23 +33,25 @@
 
                 <button type="submit" class="btn btn-primary my-1">Assign Teams</button>
 
+
             </form>
-            <a href=<%=cohort.id %>\edit><button type="hidden" class="btn btn-primary my-1">Update
+            <a href=<%=cohort.id %>\edit><button type="hidden" class="btn btn-primary my-1" value="update">Update
                     Team</button></a>
-            <button type="hidden" class="btn btn-primary my-1">Delete Team</button>
+
+
+            <form action=<%=cohort.id %> method="post">
+                <button type="hidden" class="btn btn-primary my-1" value="delete" name="_method">Delete Team</button>
+            </form>
+
 
         </div>
 
+
+
+        <% if (assignmethod) {%>
         <div class="panel-body">
+
             <span class="font-weight-bold text-capitalize"># Members</span>
-
-
-        </div>
-
-
-
-
-        <div class="panel-body">
 
             <div class="panel-body border"></div>
             <ol>
@@ -63,9 +62,15 @@
                 <%  });%>
 
             </ol>
-
-
         </div>
+        <% } %>
+
+
+
+
+
+
+
 
 
     </div>

@@ -64,9 +64,10 @@ router.get("/cohorts", (req, res) => {
 
 
 router.get("/:id", (req, res) => {
+    let assignedmethod = '';
 
     const cohortId = req.params.id;
-    const assignmethod = req.query.assignmethod;
+    assignmethod = req.query.assignmethod;
     const quantity = req.query.quantity;
     let newMembers = [];
 
@@ -94,9 +95,8 @@ router.get("/:id", (req, res) => {
             res.render("result", {
                 cohort: data[0],
                 id: cohortId,
-                newMembers
-
-
+                newMembers,
+                assignmethod
             })
 
             //   <%- JSON.stringify(newMembers) %> 
@@ -113,7 +113,7 @@ router.delete("/:id", (req, res) => {
         })
         .delete()
         .then((data) => {
-            res.redirect("")
+            res.redirect("/")
         })
 })
 
@@ -143,7 +143,8 @@ router.patch("/:id", (req, res) => {
         .update(cohortParams)
         .returning('id')
         .then((data) => {
-            res.redirect(`${data[0]}`);
+            res.redirect(`/${data[0]}`);
+
         });
 });
 
