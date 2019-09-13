@@ -1,0 +1,25 @@
+<section class="wrapper">
+
+<% @posts.each do |post| %>
+    <div class="card mx-2 my-2" style="width: 25rem;">
+        <div class="card-body" >
+            <h5><%= link_to post.title, post_path(post) %></h5>
+            <p><%=  post.body %></p>
+         </div>
+    </div>
+<% end %>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
