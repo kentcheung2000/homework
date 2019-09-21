@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blog On Rails</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+  <% flash.each do |type, message|%>
+    <div class="flash flash-<%= type %>">
+      <%= message %>
+    </div>
+  <% end %>
+
+  <%# these alert the user %>
+  <%#= flash[:notice] || flash[:alert] %>
+
+<% if user_signed_in? %>
+  Hello <%= current_user.name %>,
+  <%= link_to "Logout", session_path, method: :delete, data: {confirm: "Are you sure you want to log out"}%>
+<% else %>
+  <%= link_to "Login", new_session_path %>
+  <%= link_to "Sign Up", new_user_path %>
+<% end %>
+
+
+
+
+
+
+  <nav class="navbar navbar-light navbar-expand-md bg-faded justify-content-center">
+  
+  <a href="/" class="navbar-brand d-flex w-50 mr-auto">Blog on Rails</a>
+  <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar3">
+      <span class="navbar-toggler-icon"></span>
+  </button> -->
+
+  <!-- <div class="navbar-collapse collapse w-100" id="collapsingNavbar3"></div> -->
+  <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
+      <li class="nav-item">
+          <a class="nav-link" href="http://localhost:3000/posts/">Home</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="http://localhost:3000/posts/new">New Post</a>
+      </li>
+      
+  </ul>
+  <!-- </div> -->
+</nav>
+    <%= yield %>
+  </body>
+</html>

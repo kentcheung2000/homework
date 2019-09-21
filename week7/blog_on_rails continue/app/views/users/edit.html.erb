@@ -1,0 +1,35 @@
+<% if @user.errors.any? %>
+<ul>
+    <% @user.errors.full_messages.each do |msg|%>
+    <li><%=msg%></li>
+    <% end %>
+</ul>
+
+<%end%>
+
+<h1>Edit User</h1>
+
+<%= form_with model: @user, local: true do |f| %>
+    <h1>111</h1>
+    <div>
+        <%= f.label :name %>
+        <%= f.text_field :name, required: true, value: current_user.name %>
+    </div>
+
+    <div>
+        <%= f.label :email %>
+        <%= f.email_field :email, required: true, value: current_user.email %>
+    </div>
+
+   
+
+
+    <%= f.submit "Update Account" %>
+
+<% end %>
+
+<p><p>
+
+<div class="btn btn-primary  mr-3">
+      <%= link_to "Update Password", password_path(current_user), :class => "btn "%>  
+</div>
