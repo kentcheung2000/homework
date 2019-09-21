@@ -1,0 +1,15 @@
+<%= form_with model: @user, local: true do |f| %>
+    <h1>111</h1>
+    <div>
+        <%= f.label :name %>
+        <%= f.text_field :name, required: true, value: current_user.name %>
+    </div>
+
+    <div>
+        <%= f.label :email %>
+        <%= f.email_field :email, required: true, value: current_user.email %>
+    </div>
+
+    <%= f.submit "Update Account" %>
+
+<% end %>
